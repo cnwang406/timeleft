@@ -1,8 +1,6 @@
 import sys
 
-import urllib3
-import json
-from ptx import welcome_from_dict
+
 from getService import getService
 
 

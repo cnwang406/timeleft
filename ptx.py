@@ -14,6 +14,7 @@
 # generated from https://app.quicktype.io/#l=python
 # and modify speed, azimuth from int to float
 
+
 from typing import Any, List, TypeVar, Type, cast, Callable
 from datetime import datetime
 import dateutil.parser
@@ -104,7 +105,7 @@ class RouteName:
         return result
 
 
-class WelcomeElement:
+class PTXResponseElement:
     plate_numb: str
     operator_id: int
     route_uid: str
@@ -115,8 +116,8 @@ class WelcomeElement:
     sub_route_name: RouteName
     direction: int
     bus_position: BusPosition
-    speed: float
-    azimuth: float
+    speed: int
+    azimuth: int
     duty_status: int
     bus_status: int
     message_type: int
@@ -147,7 +148,7 @@ class WelcomeElement:
         self.update_time = update_time
 
     @staticmethod
-    def from_dict(obj: Any) -> 'WelcomeElement':
+    def from_dict(obj: Any) -> 'PTXResponseElement':
         assert isinstance(obj, dict)
         plate_numb = from_str(obj.get("PlateNumb"))
         operator_id = int(from_str(obj.get("OperatorID")))
@@ -168,7 +169,7 @@ class WelcomeElement:
         src_rec_time = from_datetime(obj.get("SrcRecTime"))
         src_trans_time = from_datetime(obj.get("SrcTransTime"))
         update_time = from_datetime(obj.get("UpdateTime"))
-        return WelcomeElement(plate_numb, operator_id, route_uid, route_id, route_name, sub_route_uid, sub_route_id, sub_route_name, direction, bus_position, speed, azimuth, duty_status, bus_status, message_type, gps_time, src_rec_time, src_trans_time, update_time)
+        return PTXResponseElement(plate_numb, operator_id, route_uid, route_id, route_name, sub_route_uid, sub_route_id, sub_route_name, direction, bus_position, speed, azimuth, duty_status, bus_status, message_type, gps_time, src_rec_time, src_trans_time, update_time)
 
     def to_dict(self) -> dict:
         result: dict = {}
@@ -182,8 +183,8 @@ class WelcomeElement:
         result["SubRouteName"] = to_class(RouteName, self.sub_route_name)
         result["Direction"] = from_int(self.direction)
         result["BusPosition"] = to_class(BusPosition, self.bus_position)
-        result["Speed"] = from_int(self.speed)
-        result["Azimuth"] = from_int(self.azimuth)
+        result["Speed"] = from_float(self.speed)
+        result["Azimuth"] = from_float(self.azimuth)
         result["DutyStatus"] = from_int(self.duty_status)
         result["BusStatus"] = from_int(self.bus_status)
         result["MessageType"] = from_int(self.message_type)
@@ -194,11 +195,21 @@ class WelcomeElement:
         return result
 
 
-def welcome_from_dict(s: Any) -> List[WelcomeElement]:
-    return from_list(WelcomeElement.from_dict, s)
+def ptx_response_from_dict(s: Any) -> List[PTXResponseElement]:
+    return from_list(PTXResponseElement.from_dict, s)
 
 
-def welcome_to_dict(x: List[WelcomeElement]) -> Any:
-    return from_list(lambda x: to_class(WelcomeElement, x), x)
+def ptx_response_to_dict(x: List[PTXResponseElement]) -> Any:
+    return from_list(lambda x: to_class(PTXResponseElement, x), x)
 
 
+def dutyString(duty_status):
+    dutyDict = {0: '正常', 1: '開始', 2: '結束'}
+
+    return dutyDict[duty_status]
+
+
+def statusString(bus_status):
+    statusDict = {0: '正常', 1: '車禍', 2: '故障', 3: '塞車', 4: '緊急求援', 5: '加油', 90: '不明',
+                  91: '去回不明', 98: '偏移路線', 99: '非營運狀態', 100: '客滿', 101: '包車出租', 255: '未知'}
+    return statusDict[bus_status]
