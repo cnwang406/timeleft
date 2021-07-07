@@ -14,6 +14,8 @@ def getService():
     if resultCode == 200:
         for data in welcome_from_dict(resultData):
             print(
-                f'bus {data.plate_numb} at [{data.bus_position.position_lat},{data.bus_position.position_lon}] with speed {data.speed}')
+                f'bus {data.route_name.zh_tw} ({data.plate_numb}) at [{data.bus_position.position_lat:9.6},{data.bus_position.position_lon:9.6}] with speed {data.speed} km/h')
             print(
-                f' distance {geoDistance(MY_LOCATION, [data.bus_position.position_lat,data.bus_position.position_lon] )} km, azimuth {data.azimuth}')
+                f' distance {geoDistance(MY_LOCATION, [data.bus_position.position_lat,data.bus_position.position_lon] ):5.3} km, azimuth {data.azimuth}')
+            print(
+                f' direction is {data.direction}, transtime {data.src_trans_time}')

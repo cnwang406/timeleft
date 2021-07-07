@@ -1,3 +1,4 @@
+
 # This code parses date/times, so please
 #
 #     pip install python-dateutil
@@ -10,11 +11,9 @@
 #
 #     result = welcome_from_dict(json.loads(json_string))
 
-
 # generated from https://app.quicktype.io/#l=python
 # and modify speed, azimuth from int to float
 
-from dataclasses import dataclass
 from typing import Any, List, TypeVar, Type, cast, Callable
 from datetime import datetime
 import dateutil.parser
@@ -57,11 +56,15 @@ def from_list(f: Callable[[Any], T], x: Any) -> List[T]:
     return [f(y) for y in x]
 
 
-@dataclass
 class BusPosition:
     position_lon: float
     position_lat: float
     geo_hash: str
+
+    def __init__(self, position_lon: float, position_lat: float, geo_hash: str) -> None:
+        self.position_lon = position_lon
+        self.position_lat = position_lat
+        self.geo_hash = geo_hash
 
     @staticmethod
     def from_dict(obj: Any) -> 'BusPosition':
@@ -79,10 +82,13 @@ class BusPosition:
         return result
 
 
-@dataclass
 class RouteName:
     zh_tw: str
     en: str
+
+    def __init__(self, zh_tw: str, en: str) -> None:
+        self.zh_tw = zh_tw
+        self.en = en
 
     @staticmethod
     def from_dict(obj: Any) -> 'RouteName':
@@ -98,7 +104,6 @@ class RouteName:
         return result
 
 
-@dataclass
 class WelcomeElement:
     plate_numb: str
     operator_id: int
@@ -119,6 +124,27 @@ class WelcomeElement:
     src_rec_time: datetime
     src_trans_time: datetime
     update_time: datetime
+
+    def __init__(self, plate_numb: str, operator_id: int, route_uid: str, route_id: str, route_name: RouteName, sub_route_uid: str, sub_route_id: str, sub_route_name: RouteName, direction: int, bus_position: BusPosition, speed: int, azimuth: int, duty_status: int, bus_status: int, message_type: int, gps_time: datetime, src_rec_time: datetime, src_trans_time: datetime, update_time: datetime) -> None:
+        self.plate_numb = plate_numb
+        self.operator_id = operator_id
+        self.route_uid = route_uid
+        self.route_id = route_id
+        self.route_name = route_name
+        self.sub_route_uid = sub_route_uid
+        self.sub_route_id = sub_route_id
+        self.sub_route_name = sub_route_name
+        self.direction = direction
+        self.bus_position = bus_position
+        self.speed = speed
+        self.azimuth = azimuth
+        self.duty_status = duty_status
+        self.bus_status = bus_status
+        self.message_type = message_type
+        self.gps_time = gps_time
+        self.src_rec_time = src_rec_time
+        self.src_trans_time = src_trans_time
+        self.update_time = update_time
 
     @staticmethod
     def from_dict(obj: Any) -> 'WelcomeElement':
@@ -174,3 +200,5 @@ def welcome_from_dict(s: Any) -> List[WelcomeElement]:
 
 def welcome_to_dict(x: List[WelcomeElement]) -> Any:
     return from_list(lambda x: to_class(WelcomeElement, x), x)
+
+
