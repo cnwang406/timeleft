@@ -191,9 +191,9 @@ class TRAResponse:
         return result
 
 
-def tra_response_from_dict(s: Any) -> TRAResponse:
+def ptxtra_response_from_dict(s: Any) -> TRAResponse:
     return TRAResponse.from_dict(s)
 
 
-def tra_response_to_dict(x: TRAResponse) -> Any:
+def ptxtra_response_to_dict(x: TRAResponse) -> Any:
     return to_class(TRAResponse, x)

@@ -195,21 +195,21 @@ class PTXResponseElement:
         return result
 
 
-def ptx_response_from_dict(s: Any) -> List[PTXResponseElement]:
+def ptxbus_response_from_dict(s: Any) -> List[PTXResponseElement]:
     return from_list(PTXResponseElement.from_dict, s)
 
 
-def ptx_response_to_dict(x: List[PTXResponseElement]) -> Any:
+def ptxbus_response_to_dict(x: List[PTXResponseElement]) -> Any:
     return from_list(lambda x: to_class(PTXResponseElement, x), x)
 
 
-def dutyString(duty_status):
+def ptxbus_dutyString(duty_status):
     dutyDict = {0: '正常', 1: '開始', 2: '結束'}
 
     return dutyDict[duty_status]
 
 
-def statusString(bus_status):
+def ptxbus_statusString(bus_status):
     statusDict = {0: '正常', 1: '車禍', 2: '故障', 3: '塞車', 4: '緊急求援', 5: '加油', 90: '不明',
                   91: '去回不明', 98: '偏移路線', 99: '非營運狀態', 100: '客滿', 101: '包車出租', 255: '未知'}
     return statusDict[bus_status]
