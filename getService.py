@@ -31,7 +31,7 @@ def getService():
     if resultCode == 200:
         for bus in ptxbus_response_from_dict(buses):
             showBus(bus)
-
+    print()
     print("===== TRAIN =====")
     resultCode, trains = send_request(
         ptxAuth.get_auth_header(), TRA_LIVE_URL, TRA_StationID)
