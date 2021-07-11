@@ -31,7 +31,7 @@ def getService():
 
     ptxAuth = PTXAuth(AUTH_USERNAME, AUTH_KEY)
 
-    print("=====  BUS  =====")
+    print("=====  BUS  ===== (refresh every 20sec)")
     resultCode, buses = send_request(
         ptxAuth.get_auth_header(), PTX_URL, ROUTE_NAME)
     if resultCode == 200:
