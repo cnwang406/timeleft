@@ -1,7 +1,7 @@
 import sys
 
 
-from getService import getService
+from getservice import getService
 
 
 if (__name__ == "__main__"):

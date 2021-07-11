@@ -10,3 +10,6 @@ TRA_TB_URL = 'https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/DailyStationTimetabl
 
 # liveboard
 TRA_LIVE_URL = 'https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/StationLiveBoard/Station'
+
+# TRA system status
+TRA_SERVICE_STATUS_URL = 'https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/Alert'
