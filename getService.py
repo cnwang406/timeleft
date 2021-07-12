@@ -7,9 +7,11 @@ from ptxtratb import ptxtra_response_from_dict
 from ptxtralive import tra_liveboard_response_from_dict, tra_liveboard_TrainTypeCode as trainTypeCode, tra_liveboard_running_status as runningStatus
 from ptxtraservice import tra_service_from_dict, tra_service_status
 from geodistance import geoDistance
+import platform
 
 
 def showBus(bus):
+
     print(
         f'bus {bus.route_name.zh_tw} ({bus.plate_numb}) at [{bus.bus_position.position_lat:9.6},{bus.bus_position.position_lon:9.6}] 時速 {bus.speed} km/h')
     print(
@@ -30,7 +32,7 @@ def showAlert(alert):
 def getService():
 
     ptxAuth = PTXAuth(AUTH_USERNAME, AUTH_KEY)
-
+    print(f'my location : [{MY_LOCATION[0]:8.6},{MY_LOCATION[1]:8.7}]\n')
     print("=====  BUS  ===== (refresh every 20sec)")
     resultCode, buses = send_request(
         ptxAuth.get_auth_header(), PTX_URL, ROUTE_NAME)
@@ -57,3 +59,9 @@ def getService():
         print('oops.....something wrong.')
         for alert in serviceStatus.alerts:
             showAlert(alert)
+
+
+if platform.machine()[0:6] == 'iPhone':
+    import location
+    loc = location.get_location()
+    MY_LOCATION = [loc['latitude'], loc['longitude']]
