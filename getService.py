@@ -32,6 +32,7 @@ def showAlert(alert):
 def getService():
 
     ptxAuth = PTXAuth(AUTH_USERNAME, AUTH_KEY)
+
     print(f'my location : [{MY_LOCATION[0]:8.6},{MY_LOCATION[1]:8.7}]\n')
     print("=====  BUS  ===== (refresh every 20sec)")
     resultCode, buses = send_request(
@@ -61,7 +62,9 @@ def getService():
             showAlert(alert)
 
 
+# init
 if platform.machine()[0:6] == 'iPhone':
     import location
     loc = location.get_location()
     MY_LOCATION = [loc['latitude'], loc['longitude']]
+    print('using iPhone')
