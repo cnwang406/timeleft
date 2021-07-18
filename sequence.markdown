@@ -40,3 +40,49 @@ API 是個很簡單的介面. 就是藉由網址列 裡面這串有意義的網�
 因為格式固定, 所以很容易拆解. 一般來說API 的說明網頁都會先講好會傳回什麼欄位跟資訊, 也不太會隨便變動.
 
 
+# 我們需要的資料
+因為我想同時看離我最近的車站(新竹車站) 跟我可以搭的公車(綠線) 看誰先到站, 所以要同時查詢
+## 綠線到達的時間 
+  不過因為公車沒有提供即時的站點相關資訊, 我只能查到公車目前距離我多遠還有速度. 這部分由 
+[取得指定{縣市},{路線名稱}的公車動態定時資料(A1){逐筆更新}](https://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/Streaming/City/{City}/{RouteName})
+可以取得. 我是取用了裡面的車牌, 位置(換算成距離), 還有方向及速度
+
+**後來我發現還真的有這樣的 API. 一開始漏掉了**
+
+[取得指定{縣市},{路線名稱}的公車動態定點資料(A2){逐筆更新}](https://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeNearStop/Streaming/City/{City}/{RouteName})
+
+  等有空時再來改
+
+## 火車到達的時間
+
+有兩個部分可以查詢
+
+1. 查詢 新竹站(ID:1210)的時刻表 (DailyStationTimetable)
+[取得當天指定{車站}的時刻表資料] (https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/DailyStationTimetable/Today/Station/{StationID})
+
+這個可以取得當站的列車時刻 . 不過我發現沒有下面那個好用
+
+2. 查詢 新竹站 的 即時時刻表 (StationLiveBoard). 
+[取得指定車次的列車即時位置動態資料] (https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/TrainLiveBoard/TrainNo/{TrainNo})
+這個可以取得延誤的時間
+
+
+# 執行結果
+```
+start
+my location : [ 24.8019,120.9714]
+
+=====  BUS  ===== (refresh every 20sec)
+bus 綠線 (821-U7) at [  24.8152,  120.988] 時速 43.0 km/h
+ 距離  1.99 km, 開向 265.0度
+ direction is 經國路往香山, transtime 2021-07-19 07:34:15+08:00 status:開始/正常
+bus 綠線 (851-U7) at [  24.8123,  120.981] 時速 0.0 km/h
+ 距離  1.25 km, 開向 55.0度
+ direction is 香山往經國路, transtime 2021-07-19 07:34:13+08:00 status:開始/正常
+
+===== TRAIN =====
+車號  2008(區間快) 往 基隆(逆), 預計離站 2021-07-19 07:38:00, 延誤   0 min, status = 準點
+車號   103(自強 ) 往 潮州(順), 預計離站 2021-07-19 07:36:00, 延誤   0 min, status = 準點
+TRA service is normal
+finished
+```

@@ -7,3 +7,17 @@ __pycache__/ptxtralive.cpython-39.pyc
 __pycache__/ptxtraservice.cpython-39.pyc
 __pycache__/ptxtratb.cpython-39.pyc
 __pycache__/sendrequest.cpython-39.pyc
+__pycache__/auth.cpython-37.pyc
+__pycache__/common.cpython-37.pyc
+__pycache__/geodistance.cpython-37.pyc
+__pycache__/getService.cpython-37.pyc
+__pycache__/ptx.cpython-37.pyc
+__pycache__/PTXauth.cpython-37.pyc
+__pycache__/ptxbus.cpython-37.pyc
+__pycache__/ptxtra.cpython-37.pyc
+__pycache__/ptxtralive.cpython-37.pyc
+__pycache__/ptxtraservice.cpython-37.pyc
+__pycache__/ptxtratb.cpython-37.pyc
+__pycache__/sendrequest.cpython-37.pyc
+__pycache__/*
+*.pyc
