@@ -8,16 +8,24 @@ from ptxtralive import tra_liveboard_response_from_dict, tra_liveboard_TrainType
 from ptxtraservice import tra_service_from_dict, tra_service_status
 from geodistance import geoDistance
 import platform
+from datetime import datetime, timedelta
 
 
 def showBus(bus):
-
+    distanceToMe = geoDistance(
+        MY_LOCATION, [bus.bus_position.position_lat, bus.bus_position.position_lon])
     print(
         f'bus {bus.route_name.zh_tw} ({bus.plate_numb}) at [{bus.bus_position.position_lat:9.6},{bus.bus_position.position_lon:9.6}] 時速 {bus.speed} km/h')
     print(
-        f' 距離 {geoDistance(MY_LOCATION, [bus.bus_position.position_lat,bus.bus_position.position_lon] ):5.3} km, 開向 {bus.azimuth}度')
+        f' 距離 {distanceToMe:5.3} km, 開向 {bus.azimuth}度')
     print(
         f' direction is {"香山往經國路" if bus.direction == 1 else "經國路往香山" }, transtime {bus.src_trans_time} status:{ptxbus_dutyString(bus.duty_status)}/{ptxbus_statusString(bus.bus_status)}')
+    if bus.speed != 0.0:
+        timeETA = (datetime.now() +
+                   timedelta(minutes=distanceToMe/bus.speed)).strftime('%H:%M')
+    else:
+        timeETA = '***'
+    print(f'ETA {timeETA}')
 
 
 def showLiveboard(train):
