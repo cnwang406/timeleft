@@ -8,10 +8,6 @@ sequence.markdown
 ### - Python
 - Version 3.9  *DONE*
 - venv : `work` setup *DONE*
-```
-virtualenv work
-```
-
 
 # understand where data come from:
 ## opendata
