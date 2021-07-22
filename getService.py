@@ -48,6 +48,8 @@ def getService():
     if resultCode == 200:
         for bus in ptxbus_response_from_dict(buses):
             showBus(bus)
+    else:
+        print("ooops...")
 
     print()
 
