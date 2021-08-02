@@ -1,9 +1,6 @@
-readme.MD
-
 ## enviroment : Python 3.9
 ### packages :
 ## IDE : VSCODE
-
 
 ## Source
 
