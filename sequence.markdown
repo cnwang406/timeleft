@@ -47,7 +47,7 @@ API 是個很簡單的介面. 就是藉由網址列 裡面這串有意義的網�
 
 [取得指定{縣市},{路線名稱}的公車動態定點資料(A2){逐筆更新}](https://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeNearStop/Streaming/City/{City}/{RouteName})
 
-  等有空時再來改
+等有空時再來改
 
 ## 火車到達的時間
 
