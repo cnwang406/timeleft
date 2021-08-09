@@ -1,6 +1,7 @@
 
 from PTXauth import Auth as PTXAuth
-from common import AUTH_USERNAME, AUTH_KEY, PTX_URL, MY_LOCATION, ROUTE_NAME, TRA_TB_URL, TRA_StationID, TRA_LIVE_URL, TRA_SERVICE_STATUS_URL
+from common import PTX_URL, MY_LOCATION, ROUTE_NAME, TRA_TB_URL, TRA_StationID, TRA_LIVE_URL, TRA_SERVICE_STATUS_URL
+from authKeys import AUTH_USERNAME, AUTH_KEY
 from sendrequest import send_request
 from ptxbus import ptxbus_response_from_dict, ptxbus_statusString, ptxbus_dutyString
 from ptxtratb import ptxtra_response_from_dict

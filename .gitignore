@@ -21,3 +21,4 @@ __pycache__/ptxtratb.cpython-37.pyc
 __pycache__/sendrequest.cpython-37.pyc
 __pycache__/*
 *.pyc
+getService.py
