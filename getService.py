@@ -63,8 +63,11 @@ def getService():
 
     resultCode, serviceStatus = send_request(
         ptxAuth.get_auth_header(), TRA_SERVICE_STATUS_URL)
+    if resultCode == 200:
+        serviceStatus = tra_service_from_dict(serviceStatus)
+    else:
+        print(f"something wrong... {resultCode}")
 
-    serviceStatus = tra_service_from_dict(serviceStatus)
     if len(serviceStatus.alerts) == 1:
         print('TRA service is normal')
     else:
