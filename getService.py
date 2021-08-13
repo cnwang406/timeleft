@@ -68,7 +68,7 @@ def getService():
     else:
         print(f"something wrong... {resultCode}")
 
-    if len(serviceStatus.alerts) == 1:
+    if len(serviceStatus) == '1':
         print('TRA service is normal')
     else:
         print('oops.....something wrong.')
