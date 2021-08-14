@@ -35,7 +35,7 @@ def showLiveboard(train):
 
 
 def showAlert(alert):
-    print(f'{alert.title} - {alert.status} ({tra_service_status(alert.update_time)})')
+    print(f'{alert.title} - {alert.status} ({alert.update_time})')
 
 
 def getService():
@@ -68,7 +68,7 @@ def getService():
     else:
         print(f"something wrong... {resultCode}")
 
-    if len(serviceStatus) == '1':
+    if len(serviceStatus.alerts) == 0:
         print('TRA service is normal')
     else:
         print('oops.....something wrong.')
