@@ -33,7 +33,6 @@ def showLiveboard(train):
     if train.station_name.zh_tw != train.ending_station_name.zh_tw:
         print(f'車號 {train.train_no:5}({trainTypeCode(train.train_type_code):3}) 往 {train.ending_station_name.zh_tw}({"順" if train.direction else "逆"}), 預計離站 {train.schedule_departure_time}, 延誤 {train.delay_time:3} min, status = {runningStatus(train.running_status)}')
 
-
 def showAlert(alert):
     print(f'{alert.title} - {alert.status} ({alert.update_time})')
 
