@@ -5,7 +5,6 @@ import requests
 
 
 def send_request(headers, url, routeName=''):
-
     try:
         response = requests.get(
             url=url + '/' + routeName,
