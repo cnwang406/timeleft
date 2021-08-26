@@ -1,4 +1,9 @@
+"""
 
+get bus and train location
+
+Lucas
+"""
 from common import MY_LOCATION
 
 from getservice import getService
