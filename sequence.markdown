@@ -55,7 +55,6 @@ API 是個很簡單的介面. 就是藉由網址列 裡面這串有意義的網�
 
 1. 查詢 新竹站(ID:1210)的時刻表 (DailyStationTimetable)
 [取得當天指定{車站}的時刻表資料] (https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/DailyStationTimetable/Today/Station/{StationID})
-
 這個可以取得當站的列車時刻 . 不過我發現沒有下面那個好用
 
 2. 查詢 新竹站 的 即時時刻表 (StationLiveBoard). 
