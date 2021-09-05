@@ -61,7 +61,6 @@ API 是個很簡單的介面. 就是藉由網址列 裡面這串有意義的網�
 [取得指定車次的列車即時位置動態資料] (https://ptx.transportdata.tw/MOTC/v3/Rail/TRA/TrainLiveBoard/TrainNo/{TrainNo})
 這個可以取得延誤的時間
 
-
 # 執行結果
 
 ## 在 notebook 上用終端機/cmd 執行
