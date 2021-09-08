@@ -23,4 +23,4 @@ SrcTransTime (string, optional): 來源端平台資料傳出時間(ISO8601格式
 SrcUpdateTime (string, optional): 來源端平台資料更新時間(ISO8601格式:yyyy-MM-ddTHH:mm:sszzz)[公總使用動態即時推播故沒有提供此欄位, 而非公總系統因提供整包資料更新, 故有提供此欄] ,
 UpdateTime (DateTime): 本平台資料更新時間(ISO8601格式:yyyy-MM-ddTHH:mm:sszzz)
 }
-```◊
+```
