@@ -12,11 +12,6 @@ import hmac
 from hashlib import sha1
 
 
-
-app_id = 'YOUR APP ID(L1)'
-app_key = 'YOUR APP KEY(L1)'
-
-
 class Auth():
 
     def __init__(self, app_id, app_key):
